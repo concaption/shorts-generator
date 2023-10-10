@@ -11,3 +11,4 @@ pre-commit==3.4.0
 
 pydub==0.25.1
 numpy==1.26.0
+moviepy==1.0.3
