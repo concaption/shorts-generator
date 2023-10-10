@@ -7,8 +7,8 @@ import os
 import sys
 import wave
 
-from pydub import AudioSegment
 import numpy as np
+from pydub import AudioSegment
 
 
 def load_config():
@@ -38,44 +38,48 @@ class Config:
     def __init__(self):
         try:
             settings = load_config()
-            self.elevenlabs_api_key = settings["api"]["eleven_labs"].get(
-                "API_KEY")
+            self.elevenlabs_api_key = settings["api"]["eleven_labs"].get("API_KEY")
             self.elevenlabs_voice = settings["api"]["eleven_labs"].get("voice")
             self.elevenlabs_model = settings["api"]["eleven_labs"].get("model")
 
             self.youtube_id = settings["api"]["youtube"].get("id")
-            self.youtube_secret_key = settings["api"]["youtube"].get(
-                "secret_key")
+            self.youtube_secret_key = settings["api"]["youtube"].get("secret_key")
 
-            self.frame_size = tuple(
-                settings["video_settings"].get("frame_size"))
+            self.frame_size = tuple(settings["video_settings"].get("frame_size"))
             self.fps = settings["video_settings"].get("fps")
-            self.music_proportion = settings["video_settings"].get(
-                "music_proportion")
+            self.music_proportion = settings["video_settings"].get("music_proportion")
 
-            self.subtitle_pos = settings["video_settings"]["subtitle"].get(
-                "y_pos")
+            self.subtitle_pos = settings["video_settings"]["subtitle"].get("y_pos")
             self.subtitle_nb_word = settings["video_settings"]["subtitle"].get(
-                "nb_word")
+                "nb_word"
+            )
             self.subtitle_nb_word_per_line = settings["video_settings"]["subtitle"].get(
-                "nb_word_per_line")
+                "nb_word_per_line"
+            )
             self.subtitle_font = settings["video_settings"].get("font")
             self.subtitle_font_size = settings["video_settings"]["subtitle"].get(
-                "font_size")
-            self.fade_duration = settings["video_settings"].get(
-                "fade_duration")
+                "font_size"
+            )
+            self.fade_duration = settings["video_settings"].get("fade_duration")
 
             self.show_title = settings["video_settings"]["title"].get("show")
-            self.time_title = settings["video_settings"]["title"].get(
-                "duration")
-            self.title_font_size = settings["video_settings"]["title"].get(
-                "font_size")
-            self.background_title = tuple(map(int, settings["video_settings"]["title"].get(
-                "background_color", "0,0,0").split(',')))
+            self.time_title = settings["video_settings"]["title"].get("duration")
+            self.title_font_size = settings["video_settings"]["title"].get("font_size")
+            self.background_title = tuple(
+                map(
+                    int,
+                    settings["video_settings"]["title"]
+                    .get("background_color", "0,0,0")
+                    .split(","),
+                )
+            )
             self.background_title_opacity = settings["video_settings"]["title"].get(
-                "background_opacity")
+                "background_opacity"
+            )
             self.color_title = settings["video_settings"]["title"].get("color")
-            self.title_nb_word_per_line = settings["video_settings"]["title"]["nb_word_per_line"]
+            self.title_nb_word_per_line = settings["video_settings"]["title"][
+                "nb_word_per_line"
+            ]
 
             self.audio_dir = settings["directories"]["audio_dir"]
             self.image_dir = settings["directories"]["image_dir"]
@@ -84,9 +88,13 @@ class Config:
             self.config_dir = settings["directories"]["config_dir"]
 
             self.user_data_dir = settings["selenium"]["user_data_dir"]
-            self.user_profile_dir_tiktok = settings["selenium"]["user_profile_dir_tiktok"]
+            self.user_profile_dir_tiktok = settings["selenium"][
+                "user_profile_dir_tiktok"
+            ]
             self.user_profile_dir_fb = settings["selenium"]["user_profile_dir_fb"]
-            self.user_profile_dir_youtube = settings["selenium"]["user_profile_dir_youtube"]
+            self.user_profile_dir_youtube = settings["selenium"][
+                "user_profile_dir_youtube"
+            ]
             self.fb_asset_id = settings["selenium"]["fb_asset_id"]
             self.fb_business_id = settings["selenium"]["fb_business_id"]
             self.youtube_channel_id = settings["selenium"]["youtube_channel_id"]
@@ -96,7 +104,9 @@ class Config:
             self.csv_path = settings["input_files"]["csv_path"]
             self.is_header_row = settings["input_files"]["is_header_row"]
 
-            self.acoustic_model_path = settings["alignment_model"]["acoustic_model_path"]
+            self.acoustic_model_path = settings["alignment_model"][
+                "acoustic_model_path"
+            ]
             self.dict_model_path = settings["alignment_model"]["dict_model_path"]
         except FileNotFoundError:
             print("No config file found. Exiting.")
@@ -167,11 +177,12 @@ class Audio:
 
         return np.array(audio.get_array_of_samples())
 
-def save_wav(audio_bytes, filename, n_channels = 1, sample_width = 2, frame_rate = 44100):
+
+def save_wav(audio_bytes, filename, n_channels=1, sample_width=2, frame_rate=44100):
     """
     Save audio bytes to wav file
     """
-    with wave.open (filename, 'wb') as wf:
+    with wave.open(filename, "wb") as wf:
         wf.setnchannels(n_channels)
         wf.setsampwidth(sample_width)
         wf.setframerate(frame_rate)

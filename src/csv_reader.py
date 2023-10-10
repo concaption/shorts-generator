@@ -33,6 +33,7 @@ Author(s):
 """
 
 import csv
+
 from utils import Config
 
 
@@ -90,7 +91,7 @@ class CSVReader:
         Reads a CSV file and populates the video_entries attribute with VideoEntry objects.
         """
         try:
-            with open(self.file_path, mode='r', encoding='utf') as file:
+            with open(self.file_path, mode="r", encoding="utf") as file:
                 csv_read = csv.reader(file)
                 if self.is_header_row:
                     next(csv_read)
@@ -102,13 +103,14 @@ class CSVReader:
                         filename, script, video_title, hashtags, video_description = row
 
                     video_entry = VideoEntry(
-                        script, video_title, hashtags, video_description, filename)
+                        script, video_title, hashtags, video_description, filename
+                    )
                     self.video_entries.append(video_entry)
 
         except FileNotFoundError:
-            print(f'File not found: {self.file_path}')
+            print(f"File not found: {self.file_path}")
         except Exception as e:  # pylint: disable=broad-except
-            print(f'An error occurred while reading the file: {e}')
+            print(f"An error occurred while reading the file: {e}")
 
     def get_video_entries(self):
         """
@@ -117,14 +119,16 @@ class CSVReader:
         return self.video_entries
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     csv_reader = CSVReader()
     video_entries = csv_reader.get_video_entries()
     for entry in video_entries:
-        print("""
-              Script: {entry.script}, 
-              Title: {entry.title}, 
-              Hashtags: {entry.hashtags}, 
-              Description: {entry.description}, 
+        print(
+            """
+              Script: {entry.script},
+              Title: {entry.title},
+              Hashtags: {entry.hashtags},
+              Description: {entry.description},
               Filename: {entry.filename}
-              """)
+              """
+        )
