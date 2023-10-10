@@ -1,1 +1,1 @@
-# shorts-generator
+# Short Generator
