@@ -10,7 +10,8 @@
 				"github.copilot",
 				"ahmadawais.shades-of-purple",
 				"ms-vscode.makefile-tools",
-				"ms-azuretools.vscode-docker"
+				"ms-azuretools.vscode-docker",
+				"twixes.pypi-assistant"
 			],
             "settings": {
                 "workbench.colorTheme": "Shades of Purple (Super Dark)"

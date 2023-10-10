@@ -1,0 +1,63 @@
+{
+    "api": {
+        "eleven_labs" : {
+            "API_KEY" : "",
+            "voice" : "Rachel",
+            "model" : "eleven_monolingual_v1"
+        },
+        "youtube" : {
+            "id" : "",
+            "secret_key" : ""
+        }
+    },
+    "video_settings" : {
+        "frame_size" : [810, 1440],
+        "FPS" : 30,
+        "fade_duration" : 0.5,
+        "music_proportion" : 0.18,
+        "font": "Lucida-Bright-Demibold",
+        "subtitle" : {
+            "_comment__y_pos" : "y position of the subtitle in the frame from the top",
+            "y_pos" : 0.25,
+            "nb_word": 10,
+            "nb_word_per_line": 3,
+            "font_size": 240
+        },
+        "title" : {
+            "show" : true,
+            "duration" : 3,
+            "color" : "black",
+            "background_color" : "255,255,255",
+            "background_opacity" : 0.65,
+            "nb_word_per_line" : 4,
+            "font_size" : 350,
+        },
+        "directories" : {
+            "audio_dir" : "resources/audio_clips/",
+            "image_dir" : "resources/images/",
+            "video_dir" : "resources/videos/",
+            "music_dir" : "resources/musics/",
+            "aligned_dir" : "resources/aligned_text/",
+            "config_dir" : "config/",
+        },
+        "input_files" : {
+            "csv_path" : "input_csv",
+            "is_header_row": false
+        },
+        "alignment_model": {
+            "accoustic_model_path" : "",
+            "dict_model_path" : "",
+        },
+        "selenium": {
+            "_comment_data_dir": "find everything by doing chrome://version, you should put below the path to your chrome user data folder",
+            "user_data_dir": "",
+            "_comment_user_profile": "you should put the path to your chrome profile in which your are logged in to your accounts",
+            "user_profile_dir_tiktok": "",
+            "user_profile_dir_fb": "",
+            "user_profile_dir_youtube": "",
+            "youtube_channel_id": "",
+            "fb_asset_id": "",
+            "fb_business_id": ""
+          }
+    }
+}
