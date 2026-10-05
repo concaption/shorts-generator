@@ -123,12 +123,10 @@ if __name__ == "__main__":
     csv_reader = CSVReader()
     video_entries = csv_reader.get_video_entries()
     for entry in video_entries:
-        print(
-            """
+        print("""
               Script: {entry.script},
               Title: {entry.title},
               Hashtags: {entry.hashtags},
               Description: {entry.description},
               Filename: {entry.filename}
-              """
-        )
+              """)
