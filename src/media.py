@@ -2,6 +2,7 @@
 path: src/media.py
 
 """
+
 from moviepy import Clip
 
 from utils import Config
